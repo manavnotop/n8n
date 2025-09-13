@@ -1,1 +1,1 @@
-{"root":["./src/index.ts","./src/services/ai/ai.ts","./src/services/resend/resend.ts","./src/services/telegram/telegram.ts"],"version":"5.9.2"}
+{"root":["./src/index.ts","./src/services/resend/resend.ts","./src/services/telegram/index.ts"],"version":"5.9.2"}

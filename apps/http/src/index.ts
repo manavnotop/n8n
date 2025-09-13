@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import { ResendEmailService } from './services/resend/resend';
+import { TelegramService } from './services/telegram';
 
 const app = express();
 
@@ -12,12 +13,14 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 app.post('/execute', async (req: Request, res: Response) => {
-  const { to } = req.body;
+  const { to, chat_id } = req.body;
 
   try{
-    
     const emailData =  await ResendEmailService(to);
-    console.log(emailData);
+    console.log("data coming from resent", emailData);
+    const message = emailData.id
+    const sendMessage = await TelegramService(chat_id, message);
+    console.log("data coming from telegram service", sendMessage);
 
     res.json({
       message: 'workflow executed successfully'

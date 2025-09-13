@@ -12,7 +12,7 @@ export const ResendEmailService = async (to: string) => {
       subject: "this is test email sending",
       html: "<strong>it works!</strong>"
     })
-    console.log(data, error)
+    
     if(error){
       throw new Error(error.message);
     }
