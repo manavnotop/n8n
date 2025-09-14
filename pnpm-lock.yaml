@@ -95,6 +95,15 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
 
+  packages/engine:
+    devDependencies:
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../types
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+
   packages/eslint-config:
     devDependencies:
       '@eslint/js':

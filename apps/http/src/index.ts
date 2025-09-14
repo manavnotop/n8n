@@ -33,6 +33,11 @@ app.post('/execute', async (req: Request, res: Response) => {
   }
 })
 
+app.post('/workflow/execute', (req: Request, res: Response) => {
+  const workflow = req.body;
+
+})
+
 app.listen(3001, () => {
   console.log('http server started, server listening on port 3001');
 })

@@ -1,4 +1,4 @@
-import { Connection, ExecutionContext, Node, NodeExecutionData, NodeExecutor, Workflow } from "@repo/types/types"
+import { ExecutionContext, Node, NodeExecutionData, NodeExecutor, Workflow } from "@repo/types/types"
 
 export class WorkflowEngine {
   private nodeRegistry: Map<string, NodeExecutor> = new Map();
