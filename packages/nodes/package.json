@@ -11,10 +11,13 @@
     "build": "tsc -b"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
-    "@repo/types": "workspace:*"
+    "@repo/types": "workspace:*",
+    "@repo/typescript-config": "workspace:*"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.12.1"
+  }
 }

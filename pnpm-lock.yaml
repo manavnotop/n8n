@@ -138,6 +138,10 @@ importers:
         version: 8.40.0(eslint@9.34.0)(typescript@5.9.2)
 
   packages/nodes:
+    dependencies:
+      axios:
+        specifier: ^1.12.1
+        version: 1.12.1
     devDependencies:
       '@repo/types':
         specifier: workspace:*

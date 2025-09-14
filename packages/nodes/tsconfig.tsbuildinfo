@@ -1,1 +1,1 @@
-{"root":["./src/index.ts","./src/form-trigger/form-trigger.executor.ts"],"version":"5.9.2"}
+{"root":["./src/index.ts","./src/form-trigger/form-trigger.executor.ts","./src/telegram/telegram.executor.ts"],"version":"5.9.2"}
