@@ -131,6 +131,15 @@ importers:
         specifier: ^8.40.0
         version: 8.40.0(eslint@9.34.0)(typescript@5.9.2)
 
+  packages/nodes:
+    devDependencies:
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../types
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+
   packages/types:
     devDependencies:
       '@repo/typescript-config':
