@@ -3,7 +3,7 @@ export interface Workflow {
   id: string,
   name: string,
   nodes: Node[],
-  connections: Connections[]
+  connections: Connections
 }
 
 //each node type; parameters is node required data, for eg: telegram node: { chat_id, message }
@@ -17,8 +17,13 @@ export interface Node {
 //how the connection object looks like; eg: sourcename: form_trigger, main is array of arrays(for multiple output and connecion)
 export interface Connections {
   [sourcename: string] : {
-    main: Array<{ node: string; index: number}>[]
+    main: Connection[][]
   }
+}
+
+export interface Connection {
+  node: string;
+  index: number
 }
 
 //data each nodes gives and next node might use for execution
@@ -30,4 +35,8 @@ export interface ExecutionContext {
   inputData: NodeExecutionData[];
   node: Node;
   workflow: Workflow;
+}
+
+export interface NodeExecutor {
+  execute(context: ExecutionContext): Promise<NodeExecutionData[]>
 }

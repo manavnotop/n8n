@@ -18,6 +18,15 @@ importers:
         specifier: 5.9.2
         version: 5.9.2
 
+  apps/engine:
+    devDependencies:
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../../packages/types
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+
   apps/http:
     dependencies:
       axios:
