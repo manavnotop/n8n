@@ -1,9 +1,12 @@
 {
-  "name": "engine",
+  "name": "@repo/engine",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-"scripts": {
+  "exports": {
+    "./engine": "./dist/index.js"
+  },
+  "scripts": {
     "build": "tsc -b",
     "test": "node dist/test-engine.js"
   },

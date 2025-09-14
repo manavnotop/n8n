@@ -14,6 +14,7 @@ export class FormTriggerExecutor implements NodeExecutor{
         name: 'manav', email: 'manuagarwal1443@gmail.com'
       }
     }
+    console.log('form data from form trigger', formData);
     return [{
         json: formData
       }

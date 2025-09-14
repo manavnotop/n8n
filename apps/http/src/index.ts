@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import { ResendEmailService } from './services/resend/resend';
 import { TelegramService } from './services/telegram';
+import { WorkflowEngine } from '@repo/engine/engine';
+import { formTrigger } from '@repo/nodes/nodes';
 
 const app = express();
 
@@ -33,9 +35,26 @@ app.post('/execute', async (req: Request, res: Response) => {
   }
 })
 
-app.post('/workflow/execute', (req: Request, res: Response) => {
-  const workflow = req.body;
+app.post('/workflow/execute', async (req: Request, res: Response) => {
+  try{
+    const workflow = req.body;
+    const engine = new WorkflowEngine();
 
+    engine.registerNodeType('form-trigger', formTrigger);
+
+    await engine.executeWorkflow(workflow);
+
+    res.status(200).json({
+      success: true,
+      message: 'workflow executed successfully'
+    })
+  }
+  catch(error: any){
+    res.status(500).json({
+      success: false,
+      message: error.message
+    })
+  }
 })
 
 app.listen(3001, () => {
