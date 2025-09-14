@@ -34,7 +34,9 @@ export class TelegramExecutor implements NodeExecutor{
           messageId: response.data.result.message_id,
           chatId: response.data.result.chat.id,
           timestamp: new Date().toISOString(),
-          message: message
+          message: message,
+          email: firstInput.email,
+          name: firstInput.name
         }
       }]
     }
