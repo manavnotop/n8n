@@ -14,14 +14,22 @@ import ReactFlow, {
   NodeProps,
   Node,
   Edge,
+  Handle,
+  Position,
 } from "reactflow";
 import "reactflow/dist/style.css";
 import { Button } from "@repo/ui/button";
 
-// Custom node components
+// Custom node components with handles for connections
 const FormTriggerNode = ({ data }: NodeProps) => {
   return (
     <div className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-green-500">
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        id="form-trigger-output"
+        style={{ background: '#4ade80' }}
+      />
       <div className="flex">
         <div className="rounded-full w-3 h-3 bg-green-500 mr-2"></div>
         <div className="font-bold">Form Trigger</div>
@@ -34,6 +42,18 @@ const FormTriggerNode = ({ data }: NodeProps) => {
 const TelegramNode = ({ data }: NodeProps) => {
   return (
     <div className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-blue-500">
+      <Handle
+        type="target"
+        position={Position.Top}
+        id="telegram-input"
+        style={{ background: '#3b82f6' }}
+      />
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        id="telegram-output"
+        style={{ background: '#3b82f6' }}
+      />
       <div className="flex">
         <div className="rounded-full w-3 h-3 bg-blue-500 mr-2"></div>
         <div className="font-bold">Telegram</div>
@@ -46,6 +66,18 @@ const TelegramNode = ({ data }: NodeProps) => {
 const ResendNode = ({ data }: NodeProps) => {
   return (
     <div className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-purple-500">
+      <Handle
+        type="target"
+        position={Position.Top}
+        id="resend-input"
+        style={{ background: '#a855f7' }}
+      />
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        id="resend-output"
+        style={{ background: '#a855f7' }}
+      />
       <div className="flex">
         <div className="rounded-full w-3 h-3 bg-purple-500 mr-2"></div>
         <div className="font-bold">Resend</div>
@@ -111,7 +143,16 @@ export default function WorkflowEditor() {
     const type = event.dataTransfer.getData("application/reactflow");
     if (typeof type === "undefined" || !type) return;
 
-    const position = { x: 0, y: 0 };
+    // Get the React Flow instance to calculate position
+    const reactFlowInstance = event.currentTarget as HTMLElement;
+    const reactFlowBounds = reactFlowInstance.getBoundingClientRect();
+    
+    // Calculate position relative to the React Flow canvas
+    const position = {
+      x: event.clientX - reactFlowBounds.left,
+      y: event.clientY - reactFlowBounds.top,
+    };
+    
     const newNode = {
       id: `${nodes.length + 1}`,
       type,
